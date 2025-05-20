@@ -10,7 +10,8 @@ async function _run(): Promise<void> {
     const args = _getAndValidateArgs();
 
     const state = getStateInstance(args);
-    await state.restore();
+    // The caching this does is annoying if you run multiple instances of this. Get rid of it.
+    // await state.restore();
 
     const issueProcessor: IssuesProcessor = new IssuesProcessor(args, state);
 
