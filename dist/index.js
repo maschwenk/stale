@@ -2488,7 +2488,8 @@ function _run() {
         try {
             const args = _getAndValidateArgs();
             const state = (0, state_service_1.getStateInstance)(args);
-            yield state.restore();
+            // The caching this does is annoying if you run multiple instances of this. Get rid of it.
+            // await state.restore();
             const issueProcessor = new issues_processor_1.IssuesProcessor(args, state);
             const rateLimitAtStart = yield issueProcessor.getRateLimit();
             if (rateLimitAtStart) {
